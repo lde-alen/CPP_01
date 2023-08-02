@@ -20,17 +20,17 @@ void	Harl::debug(void)
 
 void	Harl::info(void)
 {
-	std::cout << "[INFO]    "
-			<< "I cannot believe adding extra bacon cost more money."
-			<< " You don’t put enough! If you did I would not have to ask"
-			<< " for it!" << std::endl;
+	std::cout << "[INFO]    ";
+	std::cout << "I cannot believe adding extra bacon cost more money.";
+	std::cout << " You don’t put enough! If you did I would not have to ask";
+	std::cout << " for it!" << std::endl;
 }
 
 void	Harl::warning(void)
 {
 	std::cout << "[WARNING] ";
 	std::cout << "I think I deserve to have some extra bacon for free.";
-	std::cout << " I've been coming here for years and you just started ";
+	std::cout << " I’ve been coming here for years and you just started ";
 	std::cout << "working here last month." << std::endl;
 }
 
@@ -44,21 +44,27 @@ void	Harl::error(void)
 void	Harl::complain(std::string level)
 {
 	std::string	levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-	int i = 0; 
-	for (; i < 4 && levels[i] != level; i++)
-		;
-	switch (i)
-    {
-		default:
-			std::cerr << "Invalid level" << std::endl;
-			break ;
-        case 0:
-            debug();
-        case 1:
-            info();
-        case 2:
-            warning();
-        case 3:
-            error();
-    }
+
+	for (int i = 0; i < 4; i++)
+	{
+		if (levels[i] == level)
+		{
+			 switch (i)
+            {
+                case 0:
+                    debug();
+                    break;
+                case 1:
+                    info();
+                    break;
+                case 2:
+                    warning();
+                    break;
+                case 3:
+                    error();
+                    break;
+            }
+            break;
+		}
+	}
 }
